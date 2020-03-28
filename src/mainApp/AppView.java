@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
 
 public class AppView extends JFrame{
 	
@@ -22,9 +24,9 @@ public class AppView extends JFrame{
 	private JRadioButton outgoingRadioButton;
 	private ButtonGroup entryTypeGroup;
 	AppController appController = new AppController(this);
-
+	DefaultTableModel tableModelIncome;
+	DefaultTableModel tableModelOutgoing;
 	String [] columnNames = {"Beschreibung", "Wert"};
-
 	private ActionListener actionEventHandler;
 	
 	// Konstruktor
@@ -41,9 +43,11 @@ public class AppView extends JFrame{
 		
 		JPanel tablePanel = new JPanel();
 		tablePanel.setLayout(new FlowLayout());
-		incomeTable = new JTable(appController.getData("amountIncome"), columnNames);
+		tableModelIncome = new DefaultTableModel(appController.getData("amountIncome"), columnNames);
+		incomeTable = new JTable(tableModelIncome);
 		JScrollPane incomeTablePane = new JScrollPane(incomeTable);
-		outgoingTable = new JTable(appController.getData("amountOutgoing"), columnNames);
+		tableModelOutgoing = new DefaultTableModel(appController.getData("amountOutgoing"), columnNames);
+		outgoingTable = new JTable(tableModelOutgoing);
 		JScrollPane outgoingTablePane = new JScrollPane(outgoingTable);
 		tablePanel.add(incomeTablePane);
 		tablePanel.add(outgoingTablePane);

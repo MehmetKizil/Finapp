@@ -2,9 +2,13 @@ package mainApp;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+
 import login.LoginModel;
 
-public class AppController implements ActionListener{
+public class AppController implements ActionListener {
 
 	// Deklarieren von Attributen
 	AppView appView;
@@ -20,12 +24,10 @@ public class AppController implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if (appView.getIncomeRadioButton().isSelected()) {
 		appModel.addData(LoginModel.currentUserID, appView.getDataNameTextField().getText(), appView.getDataValueTextField().getText(), null);
-		appView.dispose();
-		Main.startMainProgram();
+		appView.tableModelIncome.setDataVector(getData("amountIncome"), appView.columnNames);
 		}else {
 		appModel.addData(LoginModel.currentUserID, appView.getDataNameTextField().getText(), null, appView.getDataValueTextField().getText());	
-		appView.dispose();
-		Main.startMainProgram();
+		appView.tableModelOutgoing.setDataVector(getData("amountOutgoing"), appView.columnNames);
 		}
 	}
 	
