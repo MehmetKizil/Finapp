@@ -62,7 +62,12 @@ class SaveAndCloseEventHandler implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		String username = new String(loginView.getRegisterUsernameTextField().getText());
 		String password = new String(loginView.getRegisterPasswordField().getPassword());
-		loginModel.insertUser(username, password);
-		loginView.getRegisterFrame().dispose();
+		if (username.equals("") || password.equals("")) {
+			loginView.getRegisterWarningLabel().setVisible(true);
+		}else {
+			loginModel.insertUser(username, password);
+			loginView.getRegisterFrame().dispose();
+		}
+		
 	}
 }

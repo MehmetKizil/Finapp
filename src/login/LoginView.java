@@ -12,6 +12,7 @@ public class LoginView extends JFrame{
 	private JLabel titelLabel;
 	private JLabel registerTitelLabel;
 	private JLabel loginWarningLabel;
+	private JLabel registerWarningLabel;
 	private JTextField usernameTextField;
 	private JTextField registerUsernameTextField;
 	private JPasswordField passwordField;
@@ -93,12 +94,16 @@ public class LoginView extends JFrame{
 		registerPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		usernameLabel = new JLabel ("Benutzername: ");
 		passwordLabel = new JLabel ("Passwort: ");
+		registerWarningLabel = new JLabel("Bitte füllen Sie die Felder aus!");
+		registerWarningLabel.setVisible(false);
+		registerWarningLabel.setForeground(Color.red);
 		registerUsernameTextField = new JTextField(10);
 		registerPasswordField = new JPasswordField(10);
 		registerPanel.add(usernameLabel);
 		registerPanel.add(registerUsernameTextField);
 		registerPanel.add(passwordLabel);
 		registerPanel.add(registerPasswordField);
+		registerPanel.add(registerWarningLabel);
 		
 		// Erstelle ButtonPanel
 		JPanel registerButtonPanel = new JPanel();
@@ -147,5 +152,9 @@ public class LoginView extends JFrame{
 
 	public void setPasswordField(JPasswordField passwordField) {
 		this.passwordField = passwordField;
+	}
+
+	public JLabel getRegisterWarningLabel() {
+		return registerWarningLabel;
 	}
 }

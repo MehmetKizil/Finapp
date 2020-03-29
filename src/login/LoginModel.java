@@ -9,7 +9,7 @@ public class LoginModel {
 	Connection c = null;
 	
 	// Verifiziert Username und Passwort Eingabe des Benutzers und gibt true raus,
-	// falls die richtige Kombination in der Datenbank vorhanden sind
+	// falls die richtige Kombination in der Datenbank vorhanden ist
 	public boolean verifyUsernamePassword (String username, String password) {
 		boolean flag = false;
 		try {

@@ -1,7 +1,6 @@
 package mainApp;
 
 import java.sql.*;
-
 import login.LoginModel;
 
 public class AppModel {
@@ -19,11 +18,13 @@ public class AppModel {
 						+ "VALUES (" + UserNr + ",'" + description + "'," + amountIncome + "," + amountOutgoing + ")";
 				s.executeUpdate(sql);
 			}
+			c.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
+	// Liest die Daten aus der Datenbank aus ("amountType" entscheidet welche Daten ausgelesen werden sollen)
 	public String [][] getDataFromDB(String amountType){
 		String [][] data = null;
 		try {
